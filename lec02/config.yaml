@@ -1,0 +1,4 @@
+api:
+  base_url: "https://fake-api-vycpfa6oca-uc.a.run.app"
+  endpoint: "/sales"
+  timeout: 10
