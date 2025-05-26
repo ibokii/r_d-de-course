@@ -85,6 +85,14 @@ services:
       - RESULTS_DIR=/opt/airflow/inference_results
       # Disable Google providers
       - AIRFLOW__PROVIDERS__DISABLE_PACKAGE_PROVIDERS=google,google_cloud,apache-airflow-providers-google
+
+      - AIRFLOW__SMTP__SMTP_HOST=${AIRFLOW__SMTP__SMTP_HOST}
+      - AIRFLOW__SMTP__SMTP_PORT=${AIRFLOW__SMTP__SMTP_PORT}
+      - AIRFLOW__SMTP__SMTP_USER=${AIRFLOW__SMTP__SMTP_USER}
+      - AIRFLOW__SMTP__SMTP_PASSWORD=${AIRFLOW__SMTP__SMTP_PASSWORD}
+      - AIRFLOW__SMTP__SMTP_MAIL_FROM=${AIRFLOW__SMTP__SMTP_MAIL_FROM}
+      - AIRFLOW__SMTP__SMTP_STARTTLS=${AIRFLOW__SMTP__SMTP_STARTTLS}
+      - AIRFLOW__SMTP__SMTP_SSL=${AIRFLOW__SMTP__SMTP_SSL}
     networks:
       - data_network
     depends_on:
@@ -129,6 +137,14 @@ services:
       - RESULTS_DIR=/opt/airflow/inference_results
       # Disable Google providers
       - AIRFLOW__PROVIDERS__DISABLE_PACKAGE_PROVIDERS=google,google_cloud,apache-airflow-providers-google
+
+      - AIRFLOW__SMTP__SMTP_HOST=${AIRFLOW__SMTP__SMTP_HOST}
+      - AIRFLOW__SMTP__SMTP_PORT=${AIRFLOW__SMTP__SMTP_PORT}
+      - AIRFLOW__SMTP__SMTP_USER=${AIRFLOW__SMTP__SMTP_USER}
+      - AIRFLOW__SMTP__SMTP_PASSWORD=${AIRFLOW__SMTP__SMTP_PASSWORD}
+      - AIRFLOW__SMTP__SMTP_MAIL_FROM=${AIRFLOW__SMTP__SMTP_MAIL_FROM}
+      - AIRFLOW__SMTP__SMTP_STARTTLS=${AIRFLOW__SMTP__SMTP_STARTTLS}
+      - AIRFLOW__SMTP__SMTP_SSL=${AIRFLOW__SMTP__SMTP_SSL}
     networks:
       - data_network
     depends_on:
