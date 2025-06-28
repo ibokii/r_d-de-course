@@ -13,8 +13,11 @@ spark = glueContext.spark_session
 
 df = spark.read.parquet("s3://bokii-data-platform-data-lake-623386377925/bronze/sales/")
 
+df = df.filter(
+    col("CustomerId").rlike("^\d+$")
+)
 df = df.withColumn(
-    "customer_id",
+    "client_id",
     col("CustomerId").cast(IntegerType())
 )
 
@@ -37,7 +40,7 @@ df = df.filter(col("purchase_date").isNotNull())
 
 (
     df.select(
-        col("customer_id"),
+        col("client_id"),
         col("Product").alias("product_name"),
         col("price"),
         col("purchase_date")
