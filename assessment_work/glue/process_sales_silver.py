@@ -5,13 +5,18 @@ from pyspark.sql.functions import (
     col, regexp_replace, to_date, trim,
     split, lpad, concat_ws
 )
-from pyspark.sql.types import DoubleType
+from pyspark.sql.types import DoubleType, IntegerType
 
 sc = SparkContext()
 glueContext = GlueContext(sc)
 spark = glueContext.spark_session
 
 df = spark.read.parquet("s3://bokii-data-platform-data-lake-623386377925/bronze/sales/")
+
+df = df.withColumn(
+    "customer_id",
+    col("CustomerId").cast(IntegerType())
+)
 
 df = df.withColumn(
     "price",
@@ -32,8 +37,8 @@ df = df.filter(col("purchase_date").isNotNull())
 
 (
     df.select(
-        col("CustomerId").alias("customer_id"),
-        col("Product").alias("product"),
+        col("customer_id"),
+        col("Product").alias("product_name"),
         col("price"),
         col("purchase_date")
     )
